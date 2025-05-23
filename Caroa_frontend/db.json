@@ -89,22 +89,18 @@
     {
       "id": "1",
       "status": "Pendente",
-      "valor_total": 100.9,
+      "valor_total": 0,
       "produtos": [
         {
-          "produtoId": "1",
+          "produtoId": "5",
           "quantidade": 1
-        },
-        {
-          "produtoId": "3",
-          "quantidade": 2
         }
       ]
     },
     {
       "id": "2",
       "status": "Concluído",
-      "valor_total": 20,
+      "valor_total": 0,
       "produtos": [
         {
           "produtoId": "2",
@@ -112,6 +108,5 @@
         }
       ]
     }
-      ]
-    }
-  
+  ]
+}

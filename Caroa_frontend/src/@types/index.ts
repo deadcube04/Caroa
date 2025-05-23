@@ -20,4 +20,8 @@ export interface Order {
     id: number,
     status: string,
     valor_total: number,
+    produtos: {
+        produtoId: number,
+        quantidade: number
+    }[];
 }

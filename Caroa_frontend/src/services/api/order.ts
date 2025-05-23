@@ -40,3 +40,14 @@ export const createOrder = async (order: Order) => {
     throw error;
   }
 };
+
+export const getPendingOrder = async (): Promise<Order | null> => {
+  try {
+    const response = await api.get<Order[]>('/pedido');
+    const pendingOrder = response.data.find(order => order.status === 'Pendente');
+    return pendingOrder || null;
+  } catch (error) {
+    console.error('Error fetching pending order:', error);
+    throw error;
+  }
+};
