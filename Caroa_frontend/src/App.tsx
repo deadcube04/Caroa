@@ -1,22 +1,15 @@
-// import { useState } from 'react'
-import './App.css'
-import Button from './components/button/button.tsx'
-function App() {
+import AppRoutes from './router/index.tsx'
+import {Navbar} from './components/navbar/Navbar.tsx'
+import { Footer } from './components/footer';
 
+function App() {
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          <h1>Welcome to Caroa</h1>
-          <p>
-            This is a simple React application.
-          </p>
-          <Button color='primary' label="Click Me" onClick={() => alert('Button clicked!')} />
-        </header>
-      </div>
+      <Navbar />
+      <AppRoutes />
+      <Footer />
     </>
   )
-
 }
 
 export default App

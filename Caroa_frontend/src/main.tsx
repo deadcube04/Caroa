@@ -1,11 +1,18 @@
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import './index.css'
-import App from './App.tsx'
-import {theme} from './theme/theme.ts'
+import App from './App'
+import {theme} from './theme/theme'
+import { GlobalStyle } from './styles/global.ts'
 
-createRoot(document.getElementById('root')!).render(
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <App />
+        <GlobalStyle />
+      </ThemeProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 )
