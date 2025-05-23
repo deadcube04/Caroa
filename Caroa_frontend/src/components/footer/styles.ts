@@ -5,6 +5,7 @@ export const FooterContainer = styled.footer`
   color: ${({ theme }) => theme.colors.complemt};
   padding: 20px;
   text-align: center;
+  margin-top: auto; /* Garante que o footer fique no limite inferior */
 `;
 
 export const FooterContent = styled.div`

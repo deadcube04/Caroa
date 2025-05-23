@@ -12,10 +12,10 @@ export function HomeCarousel() {
     <Swiper 
       slidesPerView={1} 
       loop={true} 
-      // autoplay={{
-      //   delay: 3000, // 3 segundos
-      //   disableOnInteraction: false,
-      // }}
+       autoplay={{
+         delay: 3000, // 3 segundos
+         disableOnInteraction: false,
+       }}
       speed={1000} // Suaviza a transição entre os slides
       modules={[Autoplay]}
     >
