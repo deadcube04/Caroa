@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Card } from '../../components/card/Card';
+import { getProducts } from '../../services/api/products';
+import type { Product } from '../../@types/index';
+import { useParams } from 'react-router-dom';
 
 const ProductsContainer = styled.div`
   padding: 2rem;
@@ -32,24 +35,35 @@ const CardGrid = styled.div`
   gap: 1rem;
 `;
 
-const mockProducts = [
-  { id: 1, title: 'Camisa Branca', price: 'R$ 50,00', image: '/src/assets/camisa-branca-com-detalhes.jpg', collection: 'Verão', size: 'M', model: 'Casual' },
-  { id: 2, title: 'Vestido Florido', price: 'R$ 80,00', image: '/src/assets/vestido_florido.jpg', collection: 'Primavera', size: 'G', model: 'Elegante' },
-  { id: 3, title: 'Macacão Branco', price: 'R$ 100,00', image: '/src/assets/macacão_branco_flores_pretas.jpg', collection: 'Outono', size: 'P', model: 'Casual' },
-];
-
 export function Products() {
   const [search, setSearch] = useState('');
   const [collectionFilter, setCollectionFilter] = useState('');
   const [sizeFilter, setSizeFilter] = useState('');
-  const [modelFilter, setModelFilter] = useState('');
+  const [products, setProducts] = useState<Product[]>([]);
+  const { collectionId } = useParams<{ collectionId: string }>();
+  console.log('Collection ID:', collectionId);  
 
-  const filteredProducts = mockProducts.filter((product) => {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = products.filter((product) => {
     return (
-      product.title.toLowerCase().includes(search.toLowerCase()) &&
-      (collectionFilter ? product.collection === collectionFilter : true) &&
-      (sizeFilter ? product.size === sizeFilter : true) &&
-      (modelFilter ? product.model === modelFilter : true)
+      product.nome.toLowerCase().includes(search.toLowerCase()) &&
+      (collectionFilter
+        ? (product.colecaoId == parseInt(collectionFilter))
+        : (collectionId ? product.colecaoId == parseInt(collectionId) : true)
+      ) &&
+      (sizeFilter ? product.tamanho === sizeFilter : true)
     );
   });
 
@@ -64,29 +78,25 @@ export function Products() {
       <FiltersContainer>
         <Filter value={collectionFilter} onChange={(e) => setCollectionFilter(e.target.value)}>
           <option value="">Coleção</option>
-          <option value="Verão">Verão</option>
-          <option value="Primavera">Primavera</option>
-          <option value="Outono">Outono</option>
+          <option value="1">Coleção Padrão</option>
+          <option value="2">Coleção Nordestina</option>
         </Filter>
         <Filter value={sizeFilter} onChange={(e) => setSizeFilter(e.target.value)}>
           <option value="">Tamanho</option>
+          <option value="PP">PP</option>
           <option value="P">P</option>
           <option value="M">M</option>
           <option value="G">G</option>
-        </Filter>
-        <Filter value={modelFilter} onChange={(e) => setModelFilter(e.target.value)}>
-          <option value="">Modelo</option>
-          <option value="Casual">Casual</option>
-          <option value="Elegante">Elegante</option>
+          <option value="GG">GG</option>
         </Filter>
       </FiltersContainer>
       <CardGrid>
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
-            title={product.title}
-            price={product.price}
-            image={product.image}
+            title={product.nome}
+            price={`R$ ${product.preco.toFixed(2)}`}
+            image={`/src/assets/${product.imagem}`}
           />
         ))}
       </CardGrid>

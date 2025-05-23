@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { getCollections } from '../../services/api/collection';
+import type { Collection } from '../../@types/index';
 
 const CollectionsContainer = styled.div`
   display: flex;
@@ -50,20 +53,29 @@ const CollectionTitle = styled.h3`
   font-size: ${({ theme }) => theme.font.sizes.medium};
 `;
 
-const mockCollections = [
-  { id: 1, title: 'Verão', image: '/src/assets/verao.jpg' },
-  { id: 2, title: 'Primavera', image: '/src/assets/primavera.jpg' },
-  { id: 3, title: 'Outono', image: '/src/assets/outono.jpg' },
-];
-
 export function Collections() {
+  const [collections, setCollections] = useState<Collection[]>([]);
+
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const data = await getCollections();
+        setCollections(data);
+      } catch (error) {
+        console.error('Error fetching collections:', error);
+      }
+    };
+
+    fetchCollections();
+  }, []);
+
   return (
     <CollectionsContainer>
       <CardGrid>
-        {mockCollections.map((collection) => (
-          <CollectionCard key={collection.id} to={`/produtos?colecao=${collection.title}`}>
-            <CollectionImage src={collection.image} alt={collection.title} />
-            <CollectionTitle>{collection.title}</CollectionTitle>
+        {collections.map((collection) => (
+          <CollectionCard key={collection.id} to={`/produtos?colecao=${collection.id}`}>
+            <CollectionImage src={`/src/assets/${collection.imagem}`} alt={collection.nome} />
+            <CollectionTitle>{collection.nome}</CollectionTitle>
           </CollectionCard>
         ))}
       </CardGrid>

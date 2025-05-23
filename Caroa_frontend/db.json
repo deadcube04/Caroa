@@ -7,7 +7,7 @@
       "imagem": "vestido_florido.jpg",
       "colecaoId": "1",
       "tamanho": "M",
-      "quantidade_estoque": 10,
+      "quantidade_estoque": 11,
       "quantidade_vendida": 0
     },
     {
@@ -71,16 +71,18 @@
       "quantidade_vendida": 0
     }
   ],
-  "Colecao": [
+  "colecao": [
     {
       "id": "1",
-      "nome": "Coleção Padrão",
-      "descricao": "Descrição da Coleção A"
+      "nome": "Coleção Caroá",
+      "descricao": "Descrição da Coleção A",
+      "imagem": "colecao_padrao.jpg"
     },
     {
       "id": "2",
       "nome": "Coleção Nordestina",
-      "descricao": "Descrição da Coleção B"
+      "descricao": "Descrição da Coleção B",
+      "imagem": "colecao_nordestina.jpg"
     }
   ],
   "pedido": [
@@ -88,11 +90,14 @@
       "id": "1",
       "status": "Pendente",
       "valor_total": 100.9,
-      "clienteId": "1",
       "produtos": [
         {
           "produtoId": "1",
           "quantidade": 1
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 2
         }
       ]
     },
@@ -100,26 +105,13 @@
       "id": "2",
       "status": "Concluído",
       "valor_total": 20,
-      "clienteId": "2",
       "produtos": [
         {
           "produtoId": "2",
           "quantidade": 1
         }
       ]
-    },
-    {
-      "id": "9feb",
-      "items": [
-        {
-          "productId": 1,
-          "quantity": 1
-        },
-        {
-          "productId": 2,
-          "quantity": 2
-        }
+    }
       ]
     }
-  ]
-}
+  

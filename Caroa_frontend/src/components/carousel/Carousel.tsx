@@ -4,7 +4,6 @@ import './Carousel.css'
 import camisaBranca from '../../assets/camisa-branca-com-detalhes.jpg'
 import carr1 from '../../assets/carrosel-1.jpg'
 import nordestina from '../../assets/nordestina.png'
-import { FaReact } from 'react-icons/fa';
 import { Autoplay } from 'swiper/modules';
 
 export function HomeCarousel() {
@@ -15,6 +14,7 @@ export function HomeCarousel() {
        autoplay={{
          delay: 3000, // 3 segundos
          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
        }}
       speed={1000} // Suaviza a transição entre os slides
       modules={[Autoplay]}
@@ -22,11 +22,7 @@ export function HomeCarousel() {
       <SwiperSlide><img src={carr1} alt="Imagem 1" /></SwiperSlide>
       <SwiperSlide><img src={nordestina} alt="Ícone do Site" /></SwiperSlide>
       <SwiperSlide><img src={camisaBranca} alt="Camisa Branca" /></SwiperSlide>
-      <SwiperSlide>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-          <FaReact size={50} color="blue" />
-        </div>
-      </SwiperSlide>
+      
     </Swiper>
   )
 }

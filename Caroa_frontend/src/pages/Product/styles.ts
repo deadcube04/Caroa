@@ -10,11 +10,23 @@ export const ProductContainer = styled.div`
   margin-top: 5rem; /* Adiciona espaçamento para evitar sobreposição com a navbar */
 `;
 
-export const ProductImage = styled.img`
+export const ProductImageContainer = styled.div`
+  position: relative;
   width: 20rem;
+  height: auto;
+  overflow: hidden;
+
+  &:hover img {
+    transform: scale(1.5);
+  }
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 `;
 
 export const ProductDetails = styled.div`
