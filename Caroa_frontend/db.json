@@ -3,17 +3,17 @@
     {
       "id": "1",
       "nome": "vestido Florida",
-      "preco": 100.90,
+      "preco": 100.9,
       "imagem": "vestido_florido.jpg",
       "colecaoId": "1",
       "tamanho": "M",
       "quantidade_estoque": 10,
       "quantidade_vendida": 0
-       },
+    },
     {
       "id": "2",
       "nome": "Macacão Floral",
-      "preco": 200.0,
+      "preco": 200,
       "imagem": "macacao_florido.jpg",
       "colecaoId": "2",
       "tamanho": "G",
@@ -23,7 +23,7 @@
     {
       "id": "3",
       "nome": "Camisa Caroá",
-      "preco": 90.0,
+      "preco": 90,
       "imagem": "camisa_caroa.jpg",
       "colecaoId": "1",
       "tamanho": "P",
@@ -33,7 +33,7 @@
     {
       "id": "4",
       "nome": "Saia Estampada",
-      "preco": 80.0,
+      "preco": 80,
       "imagem": "saia_estampada.jpg",
       "colecaoId": "2",
       "tamanho": "M",
@@ -43,7 +43,7 @@
     {
       "id": "5",
       "nome": "Blusa de Algodão",
-      "preco": 50.0,
+      "preco": 50,
       "imagem": "blusa_algodao.jpg",
       "colecaoId": "1",
       "tamanho": "G",
@@ -53,7 +53,7 @@
     {
       "id": "6",
       "nome": "Vestido estampado preto",
-      "preco": 79.0,
+      "preco": 79,
       "imagem": "saia_preto.jpg",
       "colecaoId": "2",
       "tamanho": "G",
@@ -63,7 +63,7 @@
     {
       "id": "7",
       "nome": "Vestido estampado laranja",
-      "preco": 250.0,
+      "preco": 250,
       "imagem": "vestido_laranja.jpg",
       "colecaoId": "1",
       "tamanho": "G",
@@ -71,7 +71,6 @@
       "quantidade_vendida": 0
     }
   ],
-
   "Colecao": [
     {
       "id": "1",
@@ -83,14 +82,12 @@
       "nome": "Coleção Nordestina",
       "descricao": "Descrição da Coleção B"
     }
-
   ],
-
   "pedido": [
     {
       "id": "1",
       "status": "Pendente",
-      "valor_total": 100.90,
+      "valor_total": 100.9,
       "clienteId": "1",
       "produtos": [
         {
@@ -99,11 +96,10 @@
         }
       ]
     },
-
     {
       "id": "2",
       "status": "Concluído",
-      "valor_total": 20.0,
+      "valor_total": 20,
       "clienteId": "2",
       "produtos": [
         {
@@ -111,8 +107,19 @@
           "quantidade": 1
         }
       ]
+    },
+    {
+      "id": "9feb",
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        }
+      ]
     }
   ]
-      
-  
 }
