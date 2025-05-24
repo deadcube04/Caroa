@@ -73,7 +73,7 @@ export function Collections() {
     <CollectionsContainer>
       <CardGrid>
         {collections.map((collection) => (
-          <CollectionCard key={collection.id} to={`/produtos?colecao=${collection.id}`}>
+          <CollectionCard key={collection.id} to={`/colecao/${collection.id}`}>
             <CollectionImage src={`/src/assets/${collection.imagem}`} alt={collection.nome} />
             <CollectionTitle>{collection.nome}</CollectionTitle>
           </CollectionCard>

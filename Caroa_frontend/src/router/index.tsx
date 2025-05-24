@@ -4,6 +4,8 @@ import { Product } from '../pages/Product/Product'
 import { Products } from '../pages/Products/Products'
 import { Collections } from '../pages/Collections/Collections'
 import { Cart } from '../pages/Cart/Cart'
+import About from '../pages/About/About'
+import Collection from '../pages/Collection/Collection'
 
 function AppRoutes() {
   return (
@@ -13,6 +15,8 @@ function AppRoutes() {
       <Route path="/produtos" element={<Products />}></Route>
       <Route path="/produto/:title" element={<Product />} />
       <Route path="/carrinho" element={<Cart />} />
+      <Route path="/sobre" element={<About />} />
+      <Route path="/colecao/:id" element={<Collection />} />
     </Routes>
   )
 }

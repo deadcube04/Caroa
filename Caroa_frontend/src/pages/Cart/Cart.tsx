@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getPendingOrder, updateOrder, createOrder } from '../../services/api/order';
-import { getProductById } from '../../services/api/products';
+import { getProductById, updateProduct } from '../../services/api/products';
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const CartContainer = styled.div`
@@ -37,6 +37,13 @@ const CartTableCell = styled.td`
   padding: 0.75rem;
   font-size: ${({ theme }) => theme.font.sizes.medium};
   color: ${({ theme }) => theme.colors.primary};
+  svg {
+    color: ${({ theme }) => theme.colors.red_600};
+}
+  svg:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.red_200};
+  }
 `;
 
 const FinalizeButton = styled.button`
@@ -58,6 +65,8 @@ const FinalizeButton = styled.button`
     transform: scale(0.98);
   }
 `;
+
+
 
 export function Cart() {
   const [cartItems, setCartItems] = useState<{ id: number; title: string; price: number; quantity: number; size?: string }[]>([]);
@@ -118,6 +127,17 @@ export function Cart() {
       // Atualiza o status do pedido atual para 'Concluído' e valor_total correto
       const pendingOrder = await getPendingOrder();
       if (pendingOrder) {
+        // Atualiza a quantidade_vendida e quantidade_estoque de cada produto
+        await Promise.all(
+          pendingOrder.produtos.map(async (item) => {
+            const product = await getProductById(item.produtoId);
+            await updateProduct(product.id, {
+              ...product,
+              quantidade_vendida: (product.quantidade_vendida || 0) + item.quantidade,
+              quantidade_estoque: (product.quantidade_estoque || 0) - item.quantidade
+            });
+          })
+        );
         const valorTotal = pendingOrder.produtos.reduce((sum, item) => {
           const cartItem = cartItems.find(ci => ci.id === item.produtoId);
           return sum + (cartItem ? cartItem.price * item.quantidade : 0);

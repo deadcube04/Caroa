@@ -16,15 +16,17 @@ export const NavbarContainer = styled.nav`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-export const NavLink = styled(Link)`
-  color:  ${(props) => props.theme.colors.primary};
+export const NavLink = styled(Link)<{ $active?: boolean }>`
+  color: ${({ $active, theme }) => $active ? theme.colors.secondary : theme.colors.primary};
   text-decoration: none;
   font-size: 1.2rem;
   margin: 0 1rem;
   font-weight: 600;
+  border-bottom: ${({ $active, theme }) => $active ? `2px solid ${theme.colors.secondary}` : 'none'};
+  transition: color 0.2s, border-bottom 0.2s;
 
   &:hover {
-    color: ${(props) => props.theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 

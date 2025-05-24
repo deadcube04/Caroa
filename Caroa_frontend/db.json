@@ -7,8 +7,8 @@
       "imagem": "vestido_florido.jpg",
       "colecaoId": "1",
       "tamanho": "M",
-      "quantidade_estoque": 11,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 8,
+      "quantidade_vendida": 6
     },
     {
       "id": "2",
@@ -17,8 +17,8 @@
       "imagem": "macacao_florido.jpg",
       "colecaoId": "2",
       "tamanho": "G",
-      "quantidade_estoque": 5,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 4,
+      "quantidade_vendida": 3
     },
     {
       "id": "3",
@@ -28,7 +28,7 @@
       "colecaoId": "1",
       "tamanho": "P",
       "quantidade_estoque": 8,
-      "quantidade_vendida": 0
+      "quantidade_vendida": 3
     },
     {
       "id": "4",
@@ -176,6 +176,54 @@
     },
     {
       "id": "7",
+      "status": "Concluído",
+      "valor_total": 380,
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 2
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "status": "Concluído",
+      "valor_total": 302.70000000000005,
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 3
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "status": "Concluído",
+      "valor_total": 302.70000000000005,
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 3
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "status": "Concluído",
+      "valor_total": 200,
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 1
+        }
+      ]
+    },
+    {
+      "id": "11",
       "status": "Pendente",
       "valor_total": 0,
       "produtos": []
