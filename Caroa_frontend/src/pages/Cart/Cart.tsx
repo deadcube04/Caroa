@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getPendingOrder, updateOrder } from '../../services/api/order';
+import { getPendingOrder, updateOrder, createOrder } from '../../services/api/order';
 import { getProductById } from '../../services/api/products';
 import { FaRegTrashAlt } from "react-icons/fa";
 
@@ -62,7 +62,7 @@ const FinalizeButton = styled.button`
 export function Cart() {
   const [cartItems, setCartItems] = useState<{ id: number; title: string; price: number; quantity: number; size?: string }[]>([]);
   const [totalValue, setTotalValue] = useState(0);
-  const [pendingOrderId, setPendingOrderId] = useState<number | null>(null);
+  const [pendingOrderId, setPendingOrderId] = useState<String | null>(null);
 
   useEffect(() => {
     async function fetchCartData() {
@@ -112,9 +112,34 @@ export function Cart() {
     }
   };
 
-  const handleFinalize = () => {
-    alert('Compra finalizada com sucesso!');
-    setCartItems([]); // Limpa o carrinho após finalizar
+  const handleFinalize = async () => {
+    if (!pendingOrderId) return;
+    try {
+      // Atualiza o status do pedido atual para 'Concluído' e valor_total correto
+      const pendingOrder = await getPendingOrder();
+      if (pendingOrder) {
+        const valorTotal = pendingOrder.produtos.reduce((sum, item) => {
+          const cartItem = cartItems.find(ci => ci.id === item.produtoId);
+          return sum + (cartItem ? cartItem.price * item.quantidade : 0);
+        }, 0);
+        await updateOrder(pendingOrder.id, { ...pendingOrder, status: 'Concluído', valor_total: valorTotal });
+        
+        const newId = Number(pendingOrder.id) + 1; // Incrementa o ID para o próximo pedido
+
+        await createOrder({
+          id: (newId).toString(), 
+          status: 'Pendente',
+          valor_total: 0,
+          produtos: []
+        });
+      }
+      setCartItems([]); // Limpa o carrinho após finalizar
+      setTotalValue(0);
+      alert('Compra finalizada com sucesso!');
+    } catch (error) {
+      alert('Erro ao finalizar o pedido!');
+      console.error(error);
+    }
   };
 
   return (

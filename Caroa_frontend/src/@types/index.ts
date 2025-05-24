@@ -17,7 +17,7 @@ export interface Collection {
 }
 
 export interface Order {
-    id: number,
+    id: String,
     status: string,
     valor_total: number,
     produtos: {

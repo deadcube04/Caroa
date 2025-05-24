@@ -69,6 +69,16 @@
       "tamanho": "G",
       "quantidade_estoque": 15,
       "quantidade_vendida": 0
+    },
+    {
+      "id": "8",
+      "nome": "Saia estampada azul",
+      "preco": 120,
+      "imagem": "saia_azul.jpg",
+      "colecaoId": "2",
+      "tamanho": "M",
+      "quantidade_estoque": 15,
+      "quantidade_vendida": 0
     }
   ],
   "colecao": [
@@ -88,7 +98,7 @@
   "pedido": [
     {
       "id": "1",
-      "status": "Pendente",
+      "status": "Concluído",
       "valor_total": 0,
       "produtos": [
         {
@@ -107,6 +117,57 @@
           "quantidade": 1
         }
       ]
+    },
+    {
+      "id": "3",
+      "status": "Concluído",
+      "valor_total": 280.9,
+      "produtos": [
+        {
+          "produtoId": "3",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "1",
+          "quantidade": 1
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "status": "Concluído",
+      "valor_total": 90,
+      "produtos": [
+        {
+          "produtoId": "3",
+          "quantidade": 1
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "status": "Concluído",
+      "valor_total": 378.9,
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "6",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "8",
+          "quantidade": 1
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "status": "Pendente",
+      "valor_total": 0,
+      "produtos": []
     }
   ]
 }

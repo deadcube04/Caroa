@@ -11,7 +11,7 @@ export const getOrders = async () => {
   }
 };
 
-export const getOrderById = async (id: number) => {
+export const getOrderById = async (id: String) => {
   try {
     const response = await api.get<Order>(`/pedido/${id}`);
     return response.data;
@@ -21,7 +21,7 @@ export const getOrderById = async (id: number) => {
   }
 };
 
-export const updateOrder = async (id: number, order: Order) => {
+export const updateOrder = async (id: String, order: Order) => {
   try {
     const response = await api.put<Order>(`/pedido/${id}`, order);
     return response.data;
@@ -33,7 +33,7 @@ export const updateOrder = async (id: number, order: Order) => {
 
 export const createOrder = async (order: Order) => {
   try {
-    const response = await api.post<Order>("/orders", order);
+    const response = await api.post<Order>("/pedido", order);
     return response.data;
   } catch (error) {
     console.error("Error creating order:", error);
