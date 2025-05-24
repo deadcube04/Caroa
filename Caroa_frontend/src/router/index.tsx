@@ -6,6 +6,7 @@ import { Collections } from '../pages/Collections/Collections'
 import { Cart } from '../pages/Cart/Cart'
 import About from '../pages/About/About'
 import Collection from '../pages/Collection/Collection'
+import OrderHistory from '../pages/OrderHistory/OrderHistory'
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
       <Route path="/carrinho" element={<Cart />} />
       <Route path="/sobre" element={<About />} />
       <Route path="/colecao/:id" element={<Collection />} />
+      <Route path="/historico" element={<OrderHistory />} />
     </Routes>
   )
 }

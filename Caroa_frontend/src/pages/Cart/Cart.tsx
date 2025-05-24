@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { getPendingOrder, updateOrder, createOrder } from '../../services/api/order';
-import { getProductById, updateProduct } from '../../services/api/products';
-import { FaRegTrashAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import {
+  getPendingOrder,
+  updateOrder,
+  createOrder,
+} from "../../services/api/order";
+import { getProductById, updateProduct } from "../../services/api/products";
+import { FaRegTrashAlt, FaClock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CartContainer = styled.div`
   display: flex;
@@ -11,6 +16,32 @@ const CartContainer = styled.div`
   justify-content: center;
   height: 100vh; /* Garante que o contêiner ocupe toda a altura da tela */
   padding: 2rem;
+
+  .historico {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: .5rem 1rem .3rem .5rem;
+    margin: 1rem;
+    font-size: ${({ theme }) => theme.font.sizes.xsmall};
+    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.terciary};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+
+    svg{
+      
+      color: ${({ theme }) => theme.colors.secondary};
+      font-size: 1.5rem;
+
+    }
+    
+
 `;
 
 const CartTable = styled.table`
@@ -39,7 +70,7 @@ const CartTableCell = styled.td`
   color: ${({ theme }) => theme.colors.primary};
   svg {
     color: ${({ theme }) => theme.colors.red_600};
-}
+  }
   svg:hover {
     cursor: pointer;
     color: ${({ theme }) => theme.colors.red_200};
@@ -58,7 +89,7 @@ const FinalizeButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryHover};
+    background-color: ${({ theme }) => theme.colors.extra};
   }
 
   &:active {
@@ -66,12 +97,19 @@ const FinalizeButton = styled.button`
   }
 `;
 
-
-
 export function Cart() {
-  const [cartItems, setCartItems] = useState<{ id: number; title: string; price: number; quantity: number; size?: string }[]>([]);
+  const [cartItems, setCartItems] = useState<
+    {
+      id: number;
+      title: string;
+      price: number;
+      quantity: number;
+      size?: string;
+    }[]
+  >([]);
   const [totalValue, setTotalValue] = useState(0);
   const [pendingOrderId, setPendingOrderId] = useState<String | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCartData() {
@@ -92,11 +130,14 @@ export function Cart() {
             })
           );
           setCartItems(products);
-          const total = products.reduce((sum, item) => sum + item.price * item.quantity, 0);
+          const total = products.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
           setTotalValue(total);
         }
       } catch (error) {
-        console.error('Erro ao buscar dados do carrinho:', error);
+        console.error("Erro ao buscar dados do carrinho:", error);
       }
     }
     fetchCartData();
@@ -106,18 +147,26 @@ export function Cart() {
     if (!pendingOrderId) return;
     try {
       // Remove do front
-      const newCartItems = cartItems.filter(item => item.id !== productId);
+      const newCartItems = cartItems.filter((item) => item.id !== productId);
       setCartItems(newCartItems);
-      const newTotal = newCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const newTotal = newCartItems.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
       setTotalValue(newTotal);
       // Remove da API
       const pendingOrder = await getPendingOrder();
       if (pendingOrder) {
-        const newProdutos = pendingOrder.produtos.filter(p => p.produtoId !== productId);
-        await updateOrder(pendingOrderId, { ...pendingOrder, produtos: newProdutos });
+        const newProdutos = pendingOrder.produtos.filter(
+          (p) => p.produtoId !== productId
+        );
+        await updateOrder(pendingOrderId, {
+          ...pendingOrder,
+          produtos: newProdutos,
+        });
       }
     } catch (error) {
-      console.error('Erro ao remover produto do pedido:', error);
+      console.error("Erro ao remover produto do pedido:", error);
     }
   };
 
@@ -133,31 +182,37 @@ export function Cart() {
             const product = await getProductById(item.produtoId);
             await updateProduct(product.id, {
               ...product,
-              quantidade_vendida: (product.quantidade_vendida || 0) + item.quantidade,
-              quantidade_estoque: (product.quantidade_estoque || 0) - item.quantidade
+              quantidade_vendida:
+                (product.quantidade_vendida || 0) + item.quantidade,
+              quantidade_estoque:
+                (product.quantidade_estoque || 0) - item.quantidade,
             });
           })
         );
         const valorTotal = pendingOrder.produtos.reduce((sum, item) => {
-          const cartItem = cartItems.find(ci => ci.id === item.produtoId);
+          const cartItem = cartItems.find((ci) => ci.id === item.produtoId);
           return sum + (cartItem ? cartItem.price * item.quantidade : 0);
         }, 0);
-        await updateOrder(pendingOrder.id, { ...pendingOrder, status: 'Concluído', valor_total: valorTotal });
-        
+        await updateOrder(pendingOrder.id, {
+          ...pendingOrder,
+          status: "Concluído",
+          valor_total: valorTotal,
+        });
+
         const newId = Number(pendingOrder.id) + 1; // Incrementa o ID para o próximo pedido
 
         await createOrder({
-          id: (newId).toString(), 
-          status: 'Pendente',
+          id: newId.toString(),
+          status: "Pendente",
           valor_total: 0,
-          produtos: []
+          produtos: [],
         });
       }
       setCartItems([]); // Limpa o carrinho após finalizar
       setTotalValue(0);
-      alert('Compra finalizada com sucesso!');
+      alert("Compra finalizada com sucesso!");
     } catch (error) {
-      alert('Erro ao finalizar o pedido!');
+      alert("Erro ao finalizar o pedido!");
       console.error(error);
     }
   };
@@ -166,6 +221,10 @@ export function Cart() {
     <CartContainer>
       {cartItems.length > 0 && (
         <>
+          <div className="historico" onClick={() => navigate("/historico")}>
+            <FaClock />
+            <p>Ver Histórico de Pedidos</p>
+          </div>
           <CartTable>
             <thead>
               <CartTableRow>
@@ -184,17 +243,29 @@ export function Cart() {
                   <CartTableCell>{item.quantity}</CartTableCell>
                   <CartTableCell>{item.size}</CartTableCell>
                   <CartTableCell>
-                  <FaRegTrashAlt onClick={() => handleRemove(item.id)} />
+                    <FaRegTrashAlt onClick={() => handleRemove(item.id)} />
                   </CartTableCell>
                 </CartTableRow>
               ))}
             </tbody>
           </CartTable>
           <p>Total: R$ {totalValue.toFixed(2)}</p>
-          <FinalizeButton onClick={handleFinalize}>Finalizar Compra</FinalizeButton>
+          <FinalizeButton onClick={handleFinalize}>
+            Finalizar Compra
+          </FinalizeButton>
         </>
       )}
-      {cartItems.length === 0 && <p>Seu carrinho está vazio.</p>}
+      {cartItems.length === 0 && (
+        <>
+          <p>Seu carrinho está vazio.</p>
+          <FinalizeButton
+            style={{ marginTop: "1rem", background: "#b8860b" }}
+            onClick={() => navigate("/historico")}
+          >
+            Ver Histórico de Pedidos
+          </FinalizeButton>
+        </>
+      )}
     </CartContainer>
   );
 }

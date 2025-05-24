@@ -2,19 +2,19 @@
   "produto": [
     {
       "id": "1",
-      "nome": "vestido Florida",
+      "nome": "vestido Florido",
       "preco": 100.9,
       "imagem": "vestido_florido.jpg",
-      "colecaoId": "1",
+      "colecaoId": "2",
       "tamanho": "M",
       "quantidade_estoque": 8,
       "quantidade_vendida": 6
     },
     {
       "id": "2",
-      "nome": "Macacão Floral",
+      "nome": "Macacão com estampa preta",
       "preco": 200,
-      "imagem": "macacao_florido.jpg",
+      "imagem": "macacão_branco_flores_pretas.jpg",
       "colecaoId": "2",
       "tamanho": "G",
       "quantidade_estoque": 4,
@@ -24,7 +24,7 @@
       "id": "3",
       "nome": "Camisa Caroá",
       "preco": 90,
-      "imagem": "camisa_caroa.jpg",
+      "imagem": "camisa_caroá.png",
       "colecaoId": "1",
       "tamanho": "P",
       "quantidade_estoque": 8,
@@ -32,9 +32,9 @@
     },
     {
       "id": "4",
-      "nome": "Saia Estampada",
+      "nome": "Camisa Estampada Branca",
       "preco": 80,
-      "imagem": "saia_estampada.jpg",
+      "imagem": "camisa-branca-com-detalhes.jpg",
       "colecaoId": "2",
       "tamanho": "M",
       "quantidade_estoque": 12,
@@ -42,9 +42,9 @@
     },
     {
       "id": "5",
-      "nome": "Blusa de Algodão",
+      "nome": "bermuda estampada",
       "preco": 50,
-      "imagem": "blusa_algodao.jpg",
+      "imagem": "camisa_caroá.png",
       "colecaoId": "1",
       "tamanho": "G",
       "quantidade_estoque": 15,
@@ -52,9 +52,9 @@
     },
     {
       "id": "6",
-      "nome": "Vestido estampado preto",
+      "nome": "Camisa Estampada Bege",
       "preco": 79,
-      "imagem": "saia_preto.jpg",
+      "imagem": "camisa-estampada.png",
       "colecaoId": "2",
       "tamanho": "G",
       "quantidade_estoque": 15,
@@ -64,8 +64,8 @@
       "id": "7",
       "nome": "Vestido estampado laranja",
       "preco": 250,
-      "imagem": "vestido_laranja.jpg",
-      "colecaoId": "1",
+      "imagem": "vestido_folhas_laranjas.png",
+      "colecaoId": "2",
       "tamanho": "G",
       "quantidade_estoque": 15,
       "quantidade_vendida": 0
@@ -79,20 +79,40 @@
       "tamanho": "M",
       "quantidade_estoque": 15,
       "quantidade_vendida": 0
+    },
+    {
+      "id": "9",
+      "nome": "Vestido estampado verde",
+      "preco": 150,
+      "imagem": "vestido_folhas_verdes.png",
+      "colecaoId": "1",
+      "tamanho": "G",
+      "quantidade_estoque": 15,
+      "quantidade_vendida": 0
+    },
+    {
+      "id": "10",
+      "nome": "Saia estampada vermelha",
+      "preco": 130,
+      "imagem": "saia_vermelha.jpg",
+      "colecaoId": "2",
+      "tamanho": "M",
+      "quantidade_estoque": 15,
+      "quantidade_vendida": 0
     }
   ],
   "colecao": [
     {
       "id": "1",
       "nome": "Coleção Caroá",
-      "descricao": "Descrição da Coleção A",
-      "imagem": "colecao_padrao.jpg"
+      "descricao": "Inspirada na tradição e cultura da família Serafim, a Coleção Caroá traz gravuras exclusivas e estampas autorais que celebram a conexão entre gerações. Cada peça é pensada para unir conforto, beleza e história, tornando-se um elo entre a nossa família e a sua.",
+      "imagem": "test1.jpg"
     },
     {
       "id": "2",
       "nome": "Coleção Nordestina",
-      "descricao": "Descrição da Coleção B",
-      "imagem": "colecao_nordestina.jpg"
+      "descricao": "A Coleção Nordestina homenageia as cores, texturas e a alegria do Nordeste brasileiro. Com estampas vibrantes e detalhes únicos, cada peça traduz a energia, a criatividade e o calor humano típicos da nossa região, levando um pouco do Nordeste para o seu dia a dia.",
+      "imagem": "nordestina.jpg"
     }
   ],
   "pedido": [
@@ -226,7 +246,12 @@
       "id": "11",
       "status": "Pendente",
       "valor_total": 0,
-      "produtos": []
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 1
+        }
+      ]
     }
   ]
 }
