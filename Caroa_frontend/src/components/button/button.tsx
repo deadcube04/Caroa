@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyledButton } from './button.ts';
-import type { ThemeColor } from '../../theme/theme.ts';
 
 interface ButtonProps {
   label: string;
   onClick: () => void;
   className?: string;
-  color?: ThemeColor; // Atualizado para corresponder ao StyledButton
+  color?: String; // Atualizado para corresponder ao StyledButton
   font?: string;
 }
 

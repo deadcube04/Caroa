@@ -165,6 +165,17 @@
     },
     {
       "id": "6",
+      "status": "Concluído",
+      "valor_total": 90,
+      "produtos": [
+        {
+          "produtoId": "3",
+          "quantidade": 1
+        }
+      ]
+    },
+    {
+      "id": "7",
       "status": "Pendente",
       "valor_total": 0,
       "produtos": []
