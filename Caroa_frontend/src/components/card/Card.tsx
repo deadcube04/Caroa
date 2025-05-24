@@ -40,7 +40,7 @@ const CardPrice = styled.p`
   font-size: ${({ theme }) => theme.font.sizes.medium};
   font-weight: bold;
 `;
-
+// @ts-ignore
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

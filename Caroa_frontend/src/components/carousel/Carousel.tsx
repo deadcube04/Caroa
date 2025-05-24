@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
+// @ts-ignore
+import 'swiper/css' 
 import './Carousel.css'
 import camisaBranca from '../../assets/camisa-branca-com-detalhes.jpg'
 import carr1 from '../../assets/carrosel-1.jpg'
