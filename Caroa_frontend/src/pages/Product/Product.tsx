@@ -61,6 +61,10 @@ export function Product() {
         alert('Nenhum pedido pendente encontrado.');
         return;
       }
+      // Atualiza o contexto do carrinho para refletir imediatamente
+      if (window.dispatchEvent) {
+        window.dispatchEvent(new Event('cart-updated'));
+      }
       alert(`${product.nome} (${selectedSize}) foi adicionado ao carrinho!`);
     } catch (error) {
       alert('Erro ao adicionar ao carrinho!');
@@ -83,6 +87,9 @@ export function Product() {
         </S.ProductImageContainer>
         <S.ProductDetails>
           <S.ProductTitle>{product.nome}</S.ProductTitle>
+          <S.ProductDescription>
+            <b>Preço:</b> R$ {product.preco.toFixed(2)}
+          </S.ProductDescription>
           <S.ProductDescription>
             Selecione o tamanho:
             <select

@@ -1,9 +1,12 @@
 import { FiShoppingBag } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import * as S from "./Navbar.ts";
+import { useCart } from "../../context/CartContext";
 
 export function Navbar() {
   const location = useLocation();
+  const { cartCount } = useCart();
+
   return (
     <S.NavbarContainer>
       <S.NavLink to="/" $active={location.pathname === "/"}>
@@ -18,9 +21,27 @@ export function Navbar() {
         <S.NavLink to="/sobre" $active={location.pathname === "/sobre"}>Sobre</S.NavLink>
       </S.LinksContainer>
       <S.RightContainer>
-        <S.CartIcon>
+        <S.CartIcon style={{ position: 'relative' }}>
           <S.NavLink to="/carrinho" $active={location.pathname === "/carrinho"}>
-            <FiShoppingBag title="Meu carrinho"/> 
+            <FiShoppingBag title="Meu carrinho"/>
+            {cartCount > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: -8,
+                right: -8,
+                background: '#CE4F2B',
+                color: '#fff',
+                borderRadius: '50%',
+                fontSize: '0.8rem',
+                width: 20,
+                height: 20,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 'bold',
+                zIndex: 2
+              }}>{cartCount}</span>
+            )}
           </S.NavLink>
         </S.CartIcon>
       </S.RightContainer>

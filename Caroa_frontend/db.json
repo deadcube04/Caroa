@@ -56,7 +56,7 @@
     },
     {
       "id": "7",
-      "nome": "Vestido estampado laranja",
+      "nome": "Vestido com detalhes",
       "preco": 250,
       "imagem": "vestido_folhas_laranjas.png",
       "colecaoId": "2",
@@ -92,7 +92,7 @@
     },
     {
       "id": "11",
-      "nome": "vestido estampadas branco",
+      "nome": "vestido estampado",
       "preco": 200,
       "imagem": "vestido_estampado_pessoa.png",
       "colecaoId": "2",
@@ -290,7 +290,28 @@
       "id": "12",
       "status": "Pendente",
       "valor_total": 0,
-      "produtos": []
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 3,
+          "tamanho": "M"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "M"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "P"
+        },
+        {
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "GG"
+        }
+      ]
     }
   ]
 }
