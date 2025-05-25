@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Rosario', sans-serif;
+        font-family: Poppins, Arial, sans-serif;
         background-color: #f0f0f0;
         color: #333;
     }
