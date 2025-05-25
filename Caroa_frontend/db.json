@@ -3,12 +3,11 @@
     {
       "id": "1",
       "nome": "vestido Florido",
-      "preco": 100.9,
+      "preco": 120,
       "imagem": "vestido_florido.jpg",
       "colecaoId": "2",
-      "tamanho": "M",
-      "quantidade_estoque": 8,
-      "quantidade_vendida": 6
+      "quantidade_estoque": 39,
+      "quantidade_vendida": 31
     },
     {
       "id": "2",
@@ -16,9 +15,8 @@
       "preco": 200,
       "imagem": "macacão_branco_flores_pretas.jpg",
       "colecaoId": "2",
-      "tamanho": "G",
-      "quantidade_estoque": 4,
-      "quantidade_vendida": 3
+      "quantidade_estoque": 20,
+      "quantidade_vendida": 15
     },
     {
       "id": "3",
@@ -26,9 +24,8 @@
       "preco": 90,
       "imagem": "camisa_caroá.png",
       "colecaoId": "1",
-      "tamanho": "P",
-      "quantidade_estoque": 8,
-      "quantidade_vendida": 3
+      "quantidade_estoque": 39,
+      "quantidade_vendida": 16
     },
     {
       "id": "4",
@@ -36,28 +33,25 @@
       "preco": 80,
       "imagem": "camisa-branca-com-detalhes.jpg",
       "colecaoId": "2",
-      "tamanho": "M",
-      "quantidade_estoque": 12,
+      "quantidade_estoque": 60,
       "quantidade_vendida": 0
     },
     {
       "id": "5",
       "nome": "bermuda estampada",
-      "preco": 50,
+      "preco": 79.99,
       "imagem": "camisa_caroá.png",
       "colecaoId": "1",
-      "tamanho": "G",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     },
     {
       "id": "6",
       "nome": "Camisa Estampada Bege",
-      "preco": 79,
+      "preco": 79.99,
       "imagem": "camisa-estampada.png",
       "colecaoId": "2",
-      "tamanho": "G",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     },
     {
@@ -66,38 +60,52 @@
       "preco": 250,
       "imagem": "vestido_folhas_laranjas.png",
       "colecaoId": "2",
-      "tamanho": "G",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     },
     {
       "id": "8",
-      "nome": "Saia estampada azul",
+      "nome": "macacão bege estampado",
       "preco": 120,
-      "imagem": "saia_azul.jpg",
+      "imagem": "macacão_bege.png",
       "colecaoId": "2",
-      "tamanho": "M",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     },
     {
       "id": "9",
-      "nome": "Vestido estampado verde",
+      "nome": "Vestido bege florido",
       "preco": 150,
-      "imagem": "vestido_folhas_verdes.png",
+      "imagem": "vestido_bege_florido.png",
       "colecaoId": "1",
-      "tamanho": "G",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     },
     {
       "id": "10",
-      "nome": "Saia estampada vermelha",
+      "nome": "camisa basica caroá",
       "preco": 130,
-      "imagem": "saia_vermelha.jpg",
+      "imagem": "camisa_base.png",
+      "colecaoId": "1",
+      "quantidade_estoque": 75,
+      "quantidade_vendida": 0
+    },
+    {
+      "id": "11",
+      "nome": "vestido estampadas branco",
+      "preco": 200,
+      "imagem": "vestido_estampado_pessoa.png",
       "colecaoId": "2",
-      "tamanho": "M",
-      "quantidade_estoque": 15,
+      "quantidade_estoque": 75,
+      "quantidade_vendida": 0
+    },
+    {
+      "id": "12",
+      "nome": "Camisa de botão florida",
+      "preco": 130,
+      "imagem": "camisa_botao_florida.png",
+      "colecaoId": "2",
+      "quantidade_estoque": 75,
       "quantidade_vendida": 0
     }
   ],
@@ -123,7 +131,8 @@
       "produtos": [
         {
           "produtoId": "5",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "M"
         }
       ]
     },
@@ -133,8 +142,9 @@
       "valor_total": 0,
       "produtos": [
         {
-          "produtoId": "2",
-          "quantidade": 1
+          "produtoId": "1",
+          "quantidade": 1,
+          "tamanho": "G"
         }
       ]
     },
@@ -144,12 +154,14 @@
       "valor_total": 280.9,
       "produtos": [
         {
-          "produtoId": "3",
-          "quantidade": 2
+          "produtoId": "1",
+          "quantidade": 2,
+          "tamanho": "M"
         },
         {
           "produtoId": "1",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "P"
         }
       ]
     },
@@ -160,7 +172,8 @@
       "produtos": [
         {
           "produtoId": "3",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "G"
         }
       ]
     },
@@ -171,15 +184,18 @@
       "produtos": [
         {
           "produtoId": "1",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "PP"
         },
         {
-          "produtoId": "6",
-          "quantidade": 2
+          "produtoId": "2",
+          "quantidade": 2,
+          "tamanho": "M"
         },
         {
-          "produtoId": "8",
-          "quantidade": 1
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "G"
         }
       ]
     },
@@ -190,7 +206,8 @@
       "produtos": [
         {
           "produtoId": "3",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "M"
         }
       ]
     },
@@ -200,34 +217,38 @@
       "valor_total": 380,
       "produtos": [
         {
-          "produtoId": "2",
-          "quantidade": 1
+          "produtoId": "1",
+          "quantidade": 1,
+          "tamanho": "P"
         },
         {
-          "produtoId": "3",
-          "quantidade": 2
+          "produtoId": "1",
+          "quantidade": 2,
+          "tamanho": "G"
         }
       ]
     },
     {
       "id": "8",
       "status": "Concluído",
-      "valor_total": 302.70000000000005,
+      "valor_total": 302.7,
       "produtos": [
         {
           "produtoId": "1",
-          "quantidade": 3
+          "quantidade": 3,
+          "tamanho": "M"
         }
       ]
     },
     {
       "id": "9",
       "status": "Concluído",
-      "valor_total": 302.70000000000005,
+      "valor_total": 302.7,
       "produtos": [
         {
           "produtoId": "1",
-          "quantidade": 3
+          "quantidade": 3,
+          "tamanho": "G"
         }
       ]
     },
@@ -238,20 +259,38 @@
       "produtos": [
         {
           "produtoId": "2",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "M"
         }
       ]
     },
     {
       "id": "11",
-      "status": "Pendente",
-      "valor_total": 0,
+      "status": "Concluído",
+      "valor_total": 280.9,
       "produtos": [
         {
           "produtoId": "1",
-          "quantidade": 1
+          "quantidade": 1,
+          "tamanho": "P"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "PP"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "GG"
         }
       ]
+    },
+    {
+      "id": "12",
+      "status": "Pendente",
+      "valor_total": 0,
+      "produtos": []
     }
   ]
 }

@@ -4,7 +4,6 @@ export interface Product {
     preco: number,
     imagem: string,
     colecaoId: number,
-    tamanho: string,
     quantidade_estoque: number, 
     quantidade_vendida: number;
 }
@@ -22,6 +21,7 @@ export interface Order {
     valor_total: number,
     produtos: {
         produtoId: number,
-        quantidade: number
+        quantidade: number,
+        tamanho: string
     }[];
 }

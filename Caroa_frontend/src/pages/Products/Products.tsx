@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const ProductsContainer = styled.div`
   padding: 2rem;
+  margin-top: 5rem; /* Garante que o conteúdo fique abaixo da navbar fixa */
 `;
 
 const SearchBar = styled.input`
@@ -38,7 +39,6 @@ const CardGrid = styled.div`
 export function Products() {
   const [search, setSearch] = useState('');
   const [collectionFilter, setCollectionFilter] = useState('');
-  const [sizeFilter, setSizeFilter] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const { collectionId } = useParams<{ collectionId: string }>();
   console.log('Collection ID:', collectionId);  
@@ -56,14 +56,18 @@ export function Products() {
     fetchProducts();
   }, []);
 
-  const filteredProducts = products.filter((product) => {
+  // Remove produtos duplicados pelo nome
+  const uniqueProducts = products.filter((product, idx, arr) =>
+    arr.findIndex(p => p.nome.toLowerCase() === product.nome.toLowerCase()) === idx
+  );
+
+  const filteredProducts = uniqueProducts.filter((product) => {
     return (
       product.nome.toLowerCase().includes(search.toLowerCase()) &&
       (collectionFilter
         ? (product.colecaoId == parseInt(collectionFilter))
         : (collectionId ? product.colecaoId == parseInt(collectionId) : true)
-      ) &&
-      (sizeFilter ? product.tamanho === sizeFilter : true)
+      )
     );
   });
 
@@ -81,25 +85,21 @@ export function Products() {
           <option value="1">Coleção Padrão</option>
           <option value="2">Coleção Nordestina</option>
         </Filter>
-        <Filter value={sizeFilter} onChange={(e) => setSizeFilter(e.target.value)}>
-          <option value="">Tamanho</option>
-          <option value="PP">PP</option>
-          <option value="P">P</option>
-          <option value="M">M</option>
-          <option value="G">G</option>
-          <option value="GG">GG</option>
-        </Filter>
       </FiltersContainer>
-      <CardGrid>
-        {filteredProducts.map((product) => (
-          <Card
-            key={product.id}
-            title={product.nome}
-            price={`R$ ${product.preco.toFixed(2)}`}
-            image={`/src/assets/${product.imagem}`}
-          />
-        ))}
-      </CardGrid>
+      {filteredProducts.length === 0 ? (
+        <p style={{ textAlign: 'center', color: '#888', marginTop: '2rem' }}>Nenhum resultado encontrado.</p>
+      ) : (
+        <CardGrid>
+          {filteredProducts.map((product) => (
+            <Card
+              key={product.id}
+              title={product.nome}
+              price={`R$ ${product.preco.toFixed(2)}`}
+              image={`/src/assets/${product.imagem}`}
+            />
+          ))}
+        </CardGrid>
+      )}
     </ProductsContainer>
   );
 }

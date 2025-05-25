@@ -18,12 +18,11 @@ const CartContainer = styled.div`
   padding: 2rem;
 
   .historico {
-
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: .5rem 1rem .3rem .5rem;
+    padding: 0.5rem 1rem 0.3rem 0.5rem;
     margin: 1rem;
     font-size: ${({ theme }) => theme.font.sizes.xsmall};
     color: ${({ theme }) => theme.colors.primary};
@@ -34,14 +33,11 @@ const CartContainer = styled.div`
     padding: 0.5rem;
     transition: background-color 0.3s ease;
 
-    svg{
-      
+    svg {
       color: ${({ theme }) => theme.colors.secondary};
       font-size: 1.5rem;
-
     }
-    
-
+  }
 `;
 
 const CartTable = styled.table`
@@ -125,7 +121,7 @@ export function Cart() {
                 title: product.nome,
                 price: product.preco,
                 quantity: item.quantidade,
-                size: product.tamanho,
+                size: item.tamanho,
               };
             })
           );
@@ -143,11 +139,13 @@ export function Cart() {
     fetchCartData();
   }, []);
 
-  const handleRemove = async (productId: number) => {
+  const handleRemove = async (productId: number, size?: string) => {
     if (!pendingOrderId) return;
     try {
       // Remove do front
-      const newCartItems = cartItems.filter((item) => item.id !== productId);
+      const newCartItems = cartItems.filter(
+        (item) => !(item.id === productId && item.size === size)
+      );
       setCartItems(newCartItems);
       const newTotal = newCartItems.reduce(
         (sum, item) => sum + item.price * item.quantity,
@@ -158,7 +156,7 @@ export function Cart() {
       const pendingOrder = await getPendingOrder();
       if (pendingOrder) {
         const newProdutos = pendingOrder.produtos.filter(
-          (p) => p.produtoId !== productId
+          (p) => !(p.produtoId === productId && p.tamanho === size)
         );
         await updateOrder(pendingOrderId, {
           ...pendingOrder,
@@ -190,7 +188,9 @@ export function Cart() {
           })
         );
         const valorTotal = pendingOrder.produtos.reduce((sum, item) => {
-          const cartItem = cartItems.find((ci) => ci.id === item.produtoId);
+          const cartItem = cartItems.find(
+            (ci) => ci.id === item.produtoId && ci.size === item.tamanho
+          );
           return sum + (cartItem ? cartItem.price * item.quantidade : 0);
         }, 0);
         await updateOrder(pendingOrder.id, {
@@ -237,13 +237,15 @@ export function Cart() {
             </thead>
             <tbody>
               {cartItems.map((item) => (
-                <CartTableRow key={item.id}>
+                <CartTableRow key={`${item.id}-${item.size}`}>
                   <CartTableCell>{item.title}</CartTableCell>
                   <CartTableCell>R$ {item.price.toFixed(2)}</CartTableCell>
                   <CartTableCell>{item.quantity}</CartTableCell>
                   <CartTableCell>{item.size}</CartTableCell>
                   <CartTableCell>
-                    <FaRegTrashAlt onClick={() => handleRemove(item.id)} />
+                    <FaRegTrashAlt
+                      onClick={() => handleRemove(item.id, item.size)}
+                    />
                   </CartTableCell>
                 </CartTableRow>
               ))}

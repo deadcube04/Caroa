@@ -50,7 +50,8 @@ export default function OrderHistory() {
             return {
               nome: product.nome,
               preco: product.preco,
-              quantidade: item.quantidade
+              quantidade: item.quantidade,
+              tamanho: item.tamanho
             };
           }));
           return { ...order, products };
@@ -79,7 +80,7 @@ export default function OrderHistory() {
           <ProductList>
             {order.products.map((prod: any, idx: number) => (
               <ProductItem key={idx}>
-                {prod.nome} - {prod.quantidade}x R$ {prod.preco.toFixed(2)}
+                {prod.nome} - {prod.quantidade}x R$ {prod.preco.toFixed(2)} <b>Tam:</b> {prod.tamanho}
               </ProductItem>
             ))}
           </ProductList>
