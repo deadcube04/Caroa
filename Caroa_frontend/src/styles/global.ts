@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         color: #333;
     }
 
+    
     a {
         text-decoration: none;
         color: inherit;
