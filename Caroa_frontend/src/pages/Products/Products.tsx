@@ -1,40 +1,9 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Card } from '../../components/card/Card';
 import { getProducts } from '../../services/api/products';
 import type { Product } from '../../@types/index';
 import { useParams } from 'react-router-dom';
-
-const ProductsContainer = styled.div`
-  padding: 2rem;
-  margin-top: 5rem; /* Garante que o conteúdo fique abaixo da navbar fixa */
-`;
-
-const SearchBar = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 5px;
-`;
-
-const FiltersContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-`;
-
-const Filter = styled.select`
-  padding: 0.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 5px;
-`;
-
-const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-`;
+import * as S from './styles';
 
 export function Products() {
   const [search, setSearch] = useState('');
@@ -72,24 +41,24 @@ export function Products() {
   });
 
   return (
-    <ProductsContainer>
-      <SearchBar
+    <S.ProductsContainer>
+      <S.SearchBar
         type="text"
         placeholder="Pesquisar produtos..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <FiltersContainer>
-        <Filter value={collectionFilter} onChange={(e) => setCollectionFilter(e.target.value)}>
+      <S.FiltersContainer>
+        <S.Filter value={collectionFilter} onChange={(e) => setCollectionFilter(e.target.value)}>
           <option value="">Coleção</option>
           <option value="1">Coleção Padrão</option>
           <option value="2">Coleção Nordestina</option>
-        </Filter>
-      </FiltersContainer>
+        </S.Filter>
+      </S.FiltersContainer>
       {filteredProducts.length === 0 ? (
         <p style={{ textAlign: 'center', color: '#888', marginTop: '2rem' }}>Nenhum resultado encontrado.</p>
       ) : (
-        <CardGrid>
+        <S.CardGrid>
           {filteredProducts.map((product) => (
             <Card
               key={product.id}
@@ -98,8 +67,8 @@ export function Products() {
               image={`/src/assets/${product.imagem}`}
             />
           ))}
-        </CardGrid>
+        </S.CardGrid>
       )}
-    </ProductsContainer>
+    </S.ProductsContainer>
   );
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import {
   getPendingOrder,
   updateOrder,
@@ -8,90 +7,7 @@ import {
 import { getProductById, updateProduct } from "../../services/api/products";
 import { FaRegTrashAlt, FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
-const CartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Garante que o contêiner ocupe toda a altura da tela */
-  padding: 2rem;
-
-  .historico {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem 0.3rem 0.5rem;
-    margin: 1rem;
-    font-size: ${({ theme }) => theme.font.sizes.xsmall};
-    color: ${({ theme }) => theme.colors.primary};
-    background-color: ${({ theme }) => theme.colors.terciary};
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: background-color 0.3s ease;
-
-    svg {
-      color: ${({ theme }) => theme.colors.secondary};
-      font-size: 1.5rem;
-    }
-  }
-`;
-
-const CartTable = styled.table`
-  width: 100%;
-  max-width: 600px;
-  border-collapse: collapse;
-  margin-bottom: 2rem;
-`;
-
-const CartTableHeader = styled.th`
-  background: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.terciary};
-  padding: 0.75rem;
-  font-size: ${({ theme }) => theme.font.sizes.medium};
-  text-align: left;
-`;
-
-const CartTableRow = styled.tr`
-  height: 56px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
-`;
-
-const CartTableCell = styled.td`
-  padding: 0.75rem;
-  font-size: ${({ theme }) => theme.font.sizes.medium};
-  color: ${({ theme }) => theme.colors.primary};
-  svg {
-    color: ${({ theme }) => theme.colors.red_600};
-  }
-  svg:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.red_200};
-  }
-`;
-
-const FinalizeButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  color: ${({ theme }) => theme.colors.terciary};
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: ${({ theme }) => theme.font.sizes.medium};
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.extra};
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-`;
+import * as S from "./styles";
 
 export function Cart() {
   const [cartItems, setCartItems] = useState<
@@ -210,6 +126,7 @@ export function Cart() {
       }
       setCartItems([]); // Limpa o carrinho após finalizar
       setTotalValue(0);
+      window.dispatchEvent(new Event('cart-updated'));
       alert("Compra finalizada com sucesso!");
     } catch (error) {
       alert("Erro ao finalizar o pedido!");
@@ -218,56 +135,56 @@ export function Cart() {
   };
 
   return (
-    <CartContainer>
+    <S.CartContainer>
       {cartItems.length > 0 && (
         <>
           <div className="historico" onClick={() => navigate("/historico")}>
             <FaClock />
             <p>Ver Histórico de Pedidos</p>
           </div>
-          <CartTable>
+          <S.CartTable>
             <thead>
-              <CartTableRow>
-                <CartTableHeader>Nome</CartTableHeader>
-                <CartTableHeader>Preço</CartTableHeader>
-                <CartTableHeader>Quantidade</CartTableHeader>
-                <CartTableHeader>Tamanho</CartTableHeader>
-                <CartTableHeader></CartTableHeader>
-              </CartTableRow>
+              <S.CartTableRow>
+                <S.CartTableHeader>Nome</S.CartTableHeader>
+                <S.CartTableHeader>Preço</S.CartTableHeader>
+                <S.CartTableHeader>Quantidade</S.CartTableHeader>
+                <S.CartTableHeader>Tamanho</S.CartTableHeader>
+                <S.CartTableHeader></S.CartTableHeader>
+              </S.CartTableRow>
             </thead>
             <tbody>
               {cartItems.map((item) => (
-                <CartTableRow key={`${item.id}-${item.size}`}>
-                  <CartTableCell>{item.title}</CartTableCell>
-                  <CartTableCell>R$ {item.price.toFixed(2)}</CartTableCell>
-                  <CartTableCell>{item.quantity}</CartTableCell>
-                  <CartTableCell>{item.size}</CartTableCell>
-                  <CartTableCell>
+                <S.CartTableRow key={`${item.id}-${item.size}`}>
+                  <S.CartTableCell>{item.title}</S.CartTableCell>
+                  <S.CartTableCell>R$ {item.price.toFixed(2)}</S.CartTableCell>
+                  <S.CartTableCell>{item.quantity}</S.CartTableCell>
+                  <S.CartTableCell>{item.size}</S.CartTableCell>
+                  <S.CartTableCell>
                     <FaRegTrashAlt
                       onClick={() => handleRemove(item.id, item.size)}
                     />
-                  </CartTableCell>
-                </CartTableRow>
+                  </S.CartTableCell>
+                </S.CartTableRow>
               ))}
             </tbody>
-          </CartTable>
+          </S.CartTable>
           <p>Total: R$ {totalValue.toFixed(2)}</p>
-          <FinalizeButton onClick={handleFinalize}>
+          <S.FinalizeButton onClick={handleFinalize}>
             Finalizar Compra
-          </FinalizeButton>
+          </S.FinalizeButton>
         </>
       )}
       {cartItems.length === 0 && (
         <>
           <p>Seu carrinho está vazio.</p>
-          <FinalizeButton
+          <S.FinalizeButton
             style={{ marginTop: "1rem", background: "#b8860b" }}
             onClick={() => navigate("/historico")}
           >
             Ver Histórico de Pedidos
-          </FinalizeButton>
+          </S.FinalizeButton>
         </>
       )}
-    </CartContainer>
+    </S.CartContainer>
   );
 }

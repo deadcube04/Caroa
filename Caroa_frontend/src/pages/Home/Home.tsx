@@ -1,37 +1,9 @@
 import { HomeCarousel } from '../../components/carousel/Carousel'
 import { Card } from '../../components/card/Card';
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../services/api/products';
+import * as S from './styles';
 
-const CardGrid = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  padding-top: .0rem;  
-  div {
-  margin-bottom: 1rem;}
-`;
-
-const HomeContainer = styled.div`
-  text-align: center;
-  padding-top: 2.5rem;
-  
-    h2 {
-    padding: 1rem;
-      font-size: ${({ theme }) => theme.font.sizes.large};
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-    h2 {
-      font-size: 1.2rem;
-    }
-  }
-`;
 
 function Home() {
   const [topProducts, setTopProducts] = useState<any[]>([]);
@@ -51,10 +23,10 @@ function Home() {
   }, []);
 
   return (
-    <HomeContainer>
+    <S.HomeContainer>
       <HomeCarousel />
       <h2>Produtos mais vendidos</h2>
-      <CardGrid>
+      <S.CardGrid>
         {topProducts.map((product) => (
           <Card
             key={product.id}
@@ -63,8 +35,8 @@ function Home() {
             image={`/src/assets/${product.imagem}`}
           />
         ))}
-      </CardGrid>
-    </HomeContainer>
+      </S.CardGrid>
+    </S.HomeContainer>
   );
 }
 

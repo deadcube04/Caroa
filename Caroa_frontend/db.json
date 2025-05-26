@@ -15,8 +15,8 @@
       "preco": 200,
       "imagem": "macacão_branco_flores_pretas.jpg",
       "colecaoId": "2",
-      "quantidade_estoque": 20,
-      "quantidade_vendida": 15
+      "quantidade_estoque": 18,
+      "quantidade_vendida": 17
     },
     {
       "id": "3",
@@ -24,8 +24,8 @@
       "preco": 90,
       "imagem": "camisa_caroá.png",
       "colecaoId": "1",
-      "quantidade_estoque": 39,
-      "quantidade_vendida": 16
+      "quantidade_estoque": 38,
+      "quantidade_vendida": 17
     },
     {
       "id": "4",
@@ -288,23 +288,30 @@
     },
     {
       "id": "12",
-      "status": "Pendente",
-      "valor_total": 0,
+      "status": "Concluído",
+      "valor_total": 210,
       "produtos": [
-        {
-          "produtoId": "2",
-          "quantidade": 3,
-          "tamanho": "M"
-        },
-        {
-          "produtoId": "3",
-          "quantidade": 1,
-          "tamanho": "M"
-        },
         {
           "produtoId": "3",
           "quantidade": 1,
           "tamanho": "P"
+        },
+        {
+          "produtoId": "1",
+          "quantidade": 1,
+          "tamanho": "GG"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "status": "Concluído",
+      "valor_total": 400,
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "M"
         },
         {
           "produtoId": "2",
@@ -312,6 +319,29 @@
           "tamanho": "GG"
         }
       ]
+    },
+    {
+      "id": "14",
+      "status": "Concluído",
+      "valor_total": 400,
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "PP"
+        },
+        {
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "G"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "status": "Pendente",
+      "valor_total": 0,
+      "produtos": []
     }
   ]
 }
