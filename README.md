@@ -2,7 +2,7 @@
 
 Este projeto é um e-commerce completo para a marca Caroá, focado em moda autoral e familiar, desenvolvido com React, TypeScript e Styled Components. A marca Caroá é de autoria de Aryelly Serafim, e seu manual completo pode ser encontrado em: [Manual da marca Caroá](https://www.behance.net/gallery/194748109/Manual-da-marca-Caroa).
 
-O sistema permite navegação por coleções, visualização de produtos, adição ao carrinho com escolha de tamanho, histórico de pedidos e controle de estoque.
+O sistema permite navegação por coleções, visualização de produtos, adição ao carrinho com escolha de tamanho, histórico de pedidos e controle de estoque. **Agora, o ícone do carrinho na Navbar é atualizado automaticamente ao finalizar um pedido, sumindo quando o carrinho está vazio. Todos os componentes principais seguem o padrão de exportação default e estrutura funcional, facilitando manutenção e legibilidade.**
 
 ## Sumário
 - [Funcionalidades](#funcionalidades)
@@ -23,6 +23,8 @@ O sistema permite navegação por coleções, visualização de produtos, adiç�
 - Histórico de pedidos com detalhes de produtos e tamanhos adquiridos.
 - Navegação por coleções e página institucional.
 - Layout responsivo e visual moderno.
+- **Ícone do carrinho atualizado em tempo real ao finalizar pedido.**
+- **Componentes padronizados com exportação default e estrutura funcional.**
 
 ## Estrutura do Projeto
 ```
