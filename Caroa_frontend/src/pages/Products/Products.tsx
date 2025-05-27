@@ -25,7 +25,6 @@ export function Products() {
     fetchProducts();
   }, []);
 
-  // Remove produtos duplicados pelo nome
   const uniqueProducts = products.filter((product, idx, arr) =>
     arr.findIndex(p => p.nome.toLowerCase() === product.nome.toLowerCase()) === idx
   );
@@ -51,7 +50,7 @@ export function Products() {
       <S.FiltersContainer>
         <S.Filter value={collectionFilter} onChange={(e) => setCollectionFilter(e.target.value)}>
           <option value="">Coleção</option>
-          <option value="1">Coleção Padrão</option>
+          <option value="1">Coleção Caroá</option>
           <option value="2">Coleção Nordestina</option>
         </S.Filter>
       </S.FiltersContainer>

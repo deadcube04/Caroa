@@ -341,7 +341,13 @@
       "id": "15",
       "status": "Pendente",
       "valor_total": 0,
-      "produtos": []
+      "produtos": [
+        {
+          "produtoId": "12",
+          "quantidade": 2,
+          "tamanho": "M"
+        }
+      ]
     }
   ]
 }
