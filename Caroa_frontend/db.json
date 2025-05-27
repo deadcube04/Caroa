@@ -2,12 +2,12 @@
   "produto": [
     {
       "id": "1",
-      "nome": "vestido Florido",
+      "nome": "Vestido Florido",
       "preco": 120,
       "imagem": "vestido_florido.jpg",
       "colecaoId": "2",
-      "quantidade_estoque": 39,
-      "quantidade_vendida": 31
+      "quantidade_estoque": 38,
+      "quantidade_vendida": 32
     },
     {
       "id": "2",
@@ -15,8 +15,8 @@
       "preco": 200,
       "imagem": "macacão_branco_flores_pretas.jpg",
       "colecaoId": "2",
-      "quantidade_estoque": 18,
-      "quantidade_vendida": 17
+      "quantidade_estoque": 17,
+      "quantidade_vendida": 18
     },
     {
       "id": "3",
@@ -24,30 +24,30 @@
       "preco": 90,
       "imagem": "camisa_caroá.png",
       "colecaoId": "1",
-      "quantidade_estoque": 38,
-      "quantidade_vendida": 17
+      "quantidade_estoque": 36,
+      "quantidade_vendida": 19
     },
     {
       "id": "4",
-      "nome": "Camisa Estampada Branca",
+      "nome": "Camisa Branca",
       "preco": 80,
       "imagem": "camisa-branca-com-detalhes.jpg",
       "colecaoId": "2",
-      "quantidade_estoque": 60,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 59,
+      "quantidade_vendida": 1
     },
     {
       "id": "5",
-      "nome": "bermuda estampada",
+      "nome": "Bermuda estampada",
       "preco": 79.99,
       "imagem": "camisa_caroá.png",
       "colecaoId": "1",
-      "quantidade_estoque": 75,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 74,
+      "quantidade_vendida": 1
     },
     {
       "id": "6",
-      "nome": "Camisa Estampada Bege",
+      "nome": "Camisa Bege",
       "preco": 79.99,
       "imagem": "camisa-estampada.png",
       "colecaoId": "2",
@@ -65,7 +65,7 @@
     },
     {
       "id": "8",
-      "nome": "macacão bege estampado",
+      "nome": "Macacão bege estampado",
       "preco": 120,
       "imagem": "macacão_bege.png",
       "colecaoId": "2",
@@ -83,16 +83,16 @@
     },
     {
       "id": "10",
-      "nome": "camisa basica caroá",
+      "nome": "Camisa basica caroá",
       "preco": 130,
       "imagem": "camisa_base.png",
       "colecaoId": "1",
-      "quantidade_estoque": 75,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 74,
+      "quantidade_vendida": 1
     },
     {
       "id": "11",
-      "nome": "vestido estampado",
+      "nome": "Vestido estampado",
       "preco": 200,
       "imagem": "vestido_estampado_pessoa.png",
       "colecaoId": "2",
@@ -105,8 +105,8 @@
       "preco": 130,
       "imagem": "camisa_botao_florida.png",
       "colecaoId": "2",
-      "quantidade_estoque": 75,
-      "quantidade_vendida": 0
+      "quantidade_estoque": 68,
+      "quantidade_vendida": 7
     }
   ],
   "colecao": [
@@ -339,15 +339,109 @@
     },
     {
       "id": "15",
-      "status": "Pendente",
-      "valor_total": 0,
+      "status": "Concluído",
+      "valor_total": 370,
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 1,
+          "tamanho": "M"
+        },
+        {
+          "produtoId": "1",
+          "quantidade": 1,
+          "tamanho": "P"
+        },
+        {
+          "produtoId": "10",
+          "quantidade": 1,
+          "tamanho": "GG"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "status": "Concluído",
+      "valor_total": 910,
       "produtos": [
         {
           "produtoId": "12",
-          "quantidade": 2,
+          "quantidade": 7,
           "tamanho": "M"
         }
       ]
+    },
+    {
+      "id": "17",
+      "status": "Concluído",
+      "valor_total": 160,
+      "produtos": [
+        {
+          "produtoId": "4",
+          "quantidade": 1,
+          "tamanho": "G"
+        },
+        {
+          "produtoId": "4",
+          "quantidade": 1,
+          "tamanho": "P"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "status": "Concluído",
+      "valor_total": 380,
+      "produtos": [
+        {
+          "produtoId": "2",
+          "quantidade": 1,
+          "tamanho": "GG"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "GG"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "M"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "status": "Concluído",
+      "valor_total": 349.99,
+      "produtos": [
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "GG"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "M"
+        },
+        {
+          "produtoId": "5",
+          "quantidade": 1,
+          "tamanho": "G"
+        },
+        {
+          "produtoId": "3",
+          "quantidade": 1,
+          "tamanho": "PP"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "status": "Pendente",
+      "valor_total": 0,
+      "produtos": []
     }
   ]
 }

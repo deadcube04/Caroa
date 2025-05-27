@@ -31,9 +31,12 @@ export const CartContainer = styled.div`
 
 export const CartTable = styled.table`
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   border-collapse: collapse;
   margin-bottom: 2rem;
+  display: block;
+  max-height: 255px; /* 3 linhas de 56px cada */
+  overflow-y: auto;
 `;
 
 export const CartTableHeader = styled.th`
@@ -42,6 +45,9 @@ export const CartTableHeader = styled.th`
   padding: 0.75rem;
   font-size: ${({ theme }) => theme.font.sizes.medium};
   text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 `;
 
 export const CartTableRow = styled.tr`
